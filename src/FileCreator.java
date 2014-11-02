@@ -21,7 +21,26 @@ public class FileCreator {
     
     //elenxei an to arxeio iparxei,an oxi to dimiourgei.
     public boolean fileChecker(File file) {
-        return true;
+         boolean exist = false;
+        try
+        {
+            if(!file.exists())
+            {
+                file.createNewFile();
+                System.out.println("DOULEUEI WS EDW!!!");
+                exist = true; 
+            } 
+            else
+            {
+                exist = false;
+            }
+        }
+        catch(IOException e)
+        {
+            System.out.println("Error file not found in directory" + e);
+        }
+        return exist;
     }
-    
 }
+    
+
