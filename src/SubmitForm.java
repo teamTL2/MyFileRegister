@@ -6,7 +6,7 @@
 
 /**
  *
- * @author Teo
+ * @author User
  */
 public class SubmitForm extends javax.swing.JFrame {
 
@@ -123,17 +123,41 @@ public class SubmitForm extends javax.swing.JFrame {
     }//GEN-LAST:event_btnExitActionPerformed
 
     private void btnClearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClearActionPerformed
-        
+      txtName.setText("");
+        txtSurname.setText("");
+        txtPhone.setText("");  
     }//GEN-LAST:event_btnClearActionPerformed
 
     private void btnSubmitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSubmitActionPerformed
         
-       
+      String txtNameText = txtName.getText();
+        String txtSurnameText = txtSurname.getText();
+        String txtPhoneText = txtPhone.getText();
+        
+        Users newUser = new Users();
+        
+        newUser.setName(txtNameText);
+        newUser.setSurname(txtSurnameText);
+        newUser.setPhone(txtPhoneText);
+        
+        DataChecksUser(newUser); 
     }//GEN-LAST:event_btnSubmitActionPerformed
     
     public void DataChecksUser(Users user)
     {
+      DataChecks SubmitChecks = new DataChecks();
+        ExceptionMessage message = new ExceptionMessage();
+        FileRegister fileRegister = new FileRegister();
         
+        if(SubmitChecks.SubmitDataChecks(user)){
+            fileRegister.fileWriter(user);
+            
+            LoginForm loginForm = new LoginForm();
+            SubmitForm.this.setVisible(false);
+            loginForm.setVisible(true);
+        }
+        else
+            message.ERRORMessage();   
     }
     /**
      * @param args the command line arguments

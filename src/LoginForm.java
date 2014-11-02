@@ -15,7 +15,7 @@ import java.util.logging.Logger;
 
 /**
  *
- * @author Teo
+ * @author User
  */
 public class LoginForm extends javax.swing.JFrame {
 
@@ -135,18 +135,37 @@ public class LoginForm extends javax.swing.JFrame {
 
     private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
         
+        String txtLoginSurnameText = txtLoginSurname.getText();
+        String txtLoginPhoneText = txtLoginPhone.getText();
         
+        Users newUser = new Users();
+        
+        newUser.setSurname(txtLoginSurnameText);
+        newUser.setPhone(txtLoginPhoneText);
+        
+        DataChecksUserLogin(newUser);
         
     }//GEN-LAST:event_btnLoginActionPerformed
 
     
     public void DataChecksUserLogin(Users user)
     {
+        DataChecks LoginChecks = new DataChecks();
+        ExceptionMessage message = new ExceptionMessage();
+        FileRegister fileRegister = new FileRegister();
+        
+        if(LoginChecks.LoginDataChecks(user)){
+            fileRegister.fileReader(user);    
+        }
+        else
+            message.ERRORMessage();
+    
         
     }
     
     private void btnClearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClearActionPerformed
-        
+        txtLoginSurname.setText("");
+        txtLoginPhone.setText("");
     }//GEN-LAST:event_btnClearActionPerformed
 
     /**
