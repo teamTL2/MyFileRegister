@@ -123,7 +123,7 @@ public class SubmitForm extends javax.swing.JFrame {
     }//GEN-LAST:event_btnExitActionPerformed
 
     private void btnClearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClearActionPerformed
-      txtName.setText("");
+        txtName.setText("");
         txtSurname.setText("");
         txtPhone.setText("");  
     }//GEN-LAST:event_btnClearActionPerformed
@@ -145,7 +145,7 @@ public class SubmitForm extends javax.swing.JFrame {
     
     public void DataChecksUser(Users user)
     {
-      DataChecks SubmitChecks = new DataChecks();
+        DataChecks SubmitChecks = new DataChecks();
         ExceptionMessage message = new ExceptionMessage();
         FileRegister fileRegister = new FileRegister();
         
